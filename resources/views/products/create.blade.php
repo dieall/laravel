@@ -1,9 +1,9 @@
 @extends('layouts.app')
   
-@section('title', 'Create Product')
+@section('title', 'Create Pelanggan')
   
 @section('contents')
-    <h1 class="mb-0">Add Product</h1>
+    <h1 class="mb-0">Add Pelanggan</h1>
     <hr />
     <form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data">
         @csrf

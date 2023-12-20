@@ -5,7 +5,7 @@
     <div class="sidebar-brand-icon rotate-n-15">
       <i class="fas fa-laugh-wink"></i>
     </div>
-    <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+    <div class="sidebar-brand-text mx-3">Toko Sejahtera</div>
   </a>
   
   <!-- Divider -->
@@ -17,22 +17,47 @@
       <i class="fas fa-fw fa-tachometer-alt"></i>
       <span>Dashboard</span></a>
   </li>
-  
+  <hr class="sidebar-divider">
+              <!-- Heading -->
+              <div class="sidebar-heading">
+                Interface
+            </div>
+
+            <!-- ISI DARI PAGES  -->
+
   <li class="nav-item">
     <a class="nav-link" href="{{ route('products') }}">
-      <i class="fas fa-fw fa-tachometer-alt"></i>
+      <i class="fas fa-fw fa-cube"></i>
       <span>Data Barang</span></a>
+  </li>
+  
+  <li class="nav-item">
+    <a class="nav-link" href="{{ route('kategori') }}">
+      <i class="fas fa-fw fa-sliders-h"></i>
+      <span>Data Kategori</span></a>
   </li>
 
   <li class="nav-item">
-    <a class="nav-link" href="{{ route('user') }}">
-      <i class="fas fa-fw fa-tachometer-alt"></i>
-      <span>Data User</span></a>
+    <a class="nav-link" href="{{ route('pelanggan') }}">
+      <i class="fas fa-fw fa-user-alt"></i>
+      <span>Data Pelanggan</span></a>
   </li>
-  
+
+  <hr class="sidebar-divider">
+              <!-- Heading -->
+              <div class="sidebar-heading">
+                Data Masters
+            </div>
+
+            <li class="nav-item">
+    <a class="nav-link" href="{{ route('user') }}">
+      <i class="fas fa-fw fa-user-alt"></i>
+      <span>Data Login</span></a>
+  </li>
+
   <li class="nav-item">
     <a class="nav-link" href="/profile">
-      <i class="fas fa-fw fa-tachometer-alt"></i>
+      <i class="fas fa-fw fa-cog"></i>
       <span>Profile</span></a>
   </li>
   
