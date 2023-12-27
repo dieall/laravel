@@ -11,6 +11,7 @@ class Product extends Model
         'nama',
         'harga',
         'kategori_id',
+        'image',
         'stok'
     ];
 
@@ -18,4 +19,6 @@ class Product extends Model
     {
         return $this->belongsTo(Kategori::class);
     }
+
+    
 }

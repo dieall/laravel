@@ -13,6 +13,7 @@ class ProductController extends Controller
      */
     public function index()
     {
+        
         $products = Product::with('kategori')->orderBy('created_at', 'DESC')->get();
     
         return view('products.index', compact('products'));
@@ -35,11 +36,30 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        Product::create($request->all());
- 
+        $request->validate([
+            'nama' => 'required|string|max:255',
+            'harga' => 'required|numeric',
+            'kategori_id' => 'required|exists:kategori,id',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:5120', // Adjust the allowed file types and size as needed
+            'stok' => 'required|integer',
+        ]);
+    
+        $input = $request->all();
+    
+        // Handle image upload
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('uploads'), $imageName);
+    
+            $input['image'] = $imageName;
+        }
+    
+        // Create the product
+        Product::create($input);
+    
         return redirect()->route('products')->with('success', 'Product added successfully');
     }
-  
     /**
      * Display the specified resource.
      */
@@ -67,6 +87,7 @@ class ProductController extends Controller
      */
     public function update(Request $request, string $id)
     {
+    
         $product = Product::findOrFail($id);
   
         $product->update($request->all());
