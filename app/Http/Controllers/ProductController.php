@@ -1,5 +1,5 @@
 <?php
-  
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -19,11 +19,6 @@ class ProductController extends Controller
         return view('products.index', compact('products'));
     }
 
-    
-
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         $categories = Kategori::all();

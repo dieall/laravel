@@ -6,9 +6,18 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\PelangganController;
+use App\Http\Controllers\LandingpageController;
 
-Route::get('/', function () {
-    return view('welcome');
+
+Route::controller(LandingpageController::class)->group(function () {
+    Route::get('', 'index')->name('landingpage');
+});
+
+
+// Grup route untuk ProductController
+Route::group(['prefix' => 'products'], function () {
+    // Definisikan route untuk menampilkan detail produk
+    Route::get('/{id}', [ProductController::class, 'show'])->name('product.show');
 });
 
 Route::controller(AuthController::class)->group(function () {
