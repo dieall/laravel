@@ -9,16 +9,18 @@ use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\LandingpageController;
 
 
-Route::controller(LandingpageController::class)->group(function () {
-    Route::get('', 'index')->name('landingpage');
-});
-
-
-// Grup route untuk ProductController
-Route::group(['prefix' => 'products'], function () {
-    // Definisikan route untuk menampilkan detail produk
+// Grup route untuk produk
+Route::prefix('produk')->group(function () {
+    // Route untuk menampilkan detail produk
     Route::get('/{id}', [ProductController::class, 'show'])->name('product.show');
+    
+    // Route untuk melakukan pembelian produk
+    Route::get('/beli/{id}', [LandingpageController::class, 'beli'])->name('beli.product');
 });
+
+// Route default untuk LandingpageController
+Route::get('/', [LandingpageController::class, 'index']);
+
 
 Route::controller(AuthController::class)->group(function () {
     Route::get('register', 'register')->name('register');
@@ -43,6 +45,7 @@ Route::middleware('auth')->group(function () {
         Route::get('edit/{id}', 'edit')->name('products.edit');
         Route::put('edit/{id}', 'update')->name('products.update');
         Route::delete('destroy/{id}', 'destroy')->name('products.destroy');
+        
     });
 
     Route::controller(UsersController::class)->prefix('user')->group(function () {

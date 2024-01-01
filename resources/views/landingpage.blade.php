@@ -87,11 +87,11 @@
                         <a href="{{ route('product.show', $product->id) }}">
                             <img src="{{ asset('uploads/' . $product->image) }}" alt="{{ $product->name }}" class="img-fluid">
                         </a>
-                        <h3 class="product-name mt-3">{{ $product->name }}</h3>
+                        <h3 class="product-name mt-3">{{ $product->nama }}</h3>
                         <!-- Tambahkan informasi produk lainnya sesuai kebutuhan -->
                         <div class="detail d-flex justify-content-between align-items-center mt-4">
-                            <p class="price">IDR {{ number_format($product->price, 2) }}</p>
-                            <a href="{{ route('product.show', $product->id) }}" class="btn-cart"><i class="bx bx-cart-alt"></i></a>
+                            <p class="price">IDR {{ number_format($product->harga, 2) }}</p>
+                            <a href="{{ route('beli.product', ['id' => $product->id]) }}" class="btn-cart"><i class="bx bx-cart-alt"></i></a>
                         </div>
                     </div>
                 </div>
