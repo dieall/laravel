@@ -23,43 +23,48 @@
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
-                                <th>ID</th>
-                                <th>Tanggal Beli</th>
+                                <th>No</th>
+                                <th>ID Transaksi</th>
                                 <th>Nama Barang</th>
                                 <th>Kategori</th>
                                 <th>Nama Pelanggan</th>
+                                <th>Tanggal Beli</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @if($transaksi->count() > 0)
-                                @foreach($transaksi as $rs)
-                                    <tr>
-                                        <td class="align-middle">{{ $rs->id }}</td>
-                                        <td class="align-middle">{{ $rs->tgl_beli }}</td>
-                                        <td class="align-middle">{{ $rs->product->nama }}</td>
-                                        <td class="align-middle">{{ $rs->kategori->jenis }}</td>
-                                        <td class="align-middle">{{ $rs->pelanggan->nama_pelanggan }}</td>
-                                        <td>
-<div class="btn-group justify-content-end" role="group" aria-label="Basic example">
-    <a href="" class="btn btn-info">Detail</a>
-    <a href="" class="btn btn-warning">Edit</a>
-    <form action="" method="POST" onsubmit="return confirm('Delete?')">
-        @csrf
-        @method('DELETE')
-        <button type="submit" class="btn btn-danger">Delete</button>
-    </form>
-</div>
+    @if($transaksi->count() > 0)
+        @php
+            $nomor = 1;
+        @endphp
+        @foreach($transaksi as $rs)
+            <tr>
+                <td class="align-middle">{{ $nomor++ }}</td>
+                <td class="align-middle">{{ $rs->id }}</td>
+                <td class="align-middle">{{ $rs->product->nama }}</td>
+                <td class="align-middle">{{ $rs->kategori->jenis }}</td>
+                <td class="align-middle">{{ $rs->pelanggan->nama_pelanggan }}</td>
+                <td class="align-middle">{{ $rs->tgl_beli }}</td>
+                <td>
+                    <div class="btn-group justify-content-end" role="group" aria-label="Basic example">
+                        <a href="" class="btn btn-info">Detail</a>
+                        <a href="" class="btn btn-warning">Edit</a>
+                        <form action="" method="POST" onsubmit="return confirm('Delete?')">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    </div>
+                </td>
+            </tr>
+        @endforeach
+    @else
+        <tr>
+            <td colspan="3" class="text-center">Category not found</td>
+        </tr>
+    @endif
+</tbody>
 
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            @else
-                                <tr>
-                                    <td colspan="3" class="text-center">Category not found</td>
-                                </tr>
-                            @endif
-                        </tbody>
                     </table>
                 </div>
             </div>
