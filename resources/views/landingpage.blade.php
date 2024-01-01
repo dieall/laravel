@@ -84,14 +84,14 @@
             @foreach ($products as $product)
                 <div class="col-lg-3 col-6">
                     <div class="card card-product card-body p-lg-4 p3">
-                        <a href="{{ route('product.show', $product->id) }}">
+                        <a href="{{ route('product.show', $product->id_barang) }}">
                             <img src="{{ asset('uploads/' . $product->image) }}" alt="{{ $product->name }}" class="img-fluid">
                         </a>
                         <h3 class="product-name mt-3">{{ $product->nama }}</h3>
                         <!-- Tambahkan informasi produk lainnya sesuai kebutuhan -->
                         <div class="detail d-flex justify-content-between align-items-center mt-4">
                             <p class="price">IDR {{ number_format($product->harga, 2) }}</p>
-                            <a href="{{ route('beli.product', ['id' => $product->id]) }}" class="btn-cart"><i class="bx bx-cart-alt"></i></a>
+                            <a href="{{ route('beli.product', ['id' => $product->id_barang]) }}" class="btn-cart"><i class="bx bx-cart-alt"></i></a>
                         </div>
                     </div>
                 </div>
