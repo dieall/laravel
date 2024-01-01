@@ -2,14 +2,17 @@
 
 namespace App\Models;
 
-
 use Illuminate\Database\Eloquent\Model;
 
 class Transaksi extends Model
 {
     protected $table = "transaksi";
-    protected $primaryKey = "id";
-    protected $fillable = ['id', 'tgl_beli', 'id_barang', 'kategori_id', 'id_pelanggan'];
+    protected $fillable = ['tgl_beli', 'id_barang', 'kategori_id', 'id_pelanggan'];
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class, 'id_barang');
+    }
 
     public function kategori()
     {
@@ -20,13 +23,4 @@ class Transaksi extends Model
     {
         return $this->belongsTo(Pelanggan::class, 'id_pelanggan');
     }
-
-    // Relasi dengan model 'Product'
-    public function product()
-    {
-        return $this->belongsTo(Product::class, 'id_barang');
-    }
-
-
-
 }

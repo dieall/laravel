@@ -3,7 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Transaksi;
+use App\Models\Product;
+use App\Models\Kategori;
+use App\Models\Pelanggan;
 use Illuminate\Http\Request;
+
+use Illuminate\Support\Facades\Log;
 
 class TransaksiController extends Controller
 {
@@ -23,46 +28,39 @@ class TransaksiController extends Controller
      */
     public function create()
     {
-        //
+        $products = Product::all();
+        $pelanggans = Pelanggan::all();
+        $categories = Kategori::all();
+    
+        return view('transaksi.create', compact('products', 'pelanggans', 'categories'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
-        //
-    }
+    
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
+     public function store(Request $request)
+{
+    // Validasi request jika diperlukan
+    $validatedData = $request->validate([
+        'tgl_beli' => 'required|date',
+        'id_barang' => 'required',
+        'kategori_id' => 'required',
+        'id_pelanggan' => 'required',
+    ]);
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
+    // Simpan data ke dalam database
+    $transaksi = new Transaksi([
+        'tgl_beli' => $validatedData['tgl_beli'],
+        'id_barang' => $validatedData['id_barang'],
+        'kategori_id' => $validatedData['kategori_id'],
+        'id_pelanggan' => $validatedData['id_pelanggan'],
+        // tambahkan kolom-kolom lain sesuai kebutuhan
+    ]);
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
+    $transaksi->save();
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
+    return redirect()->route('transaksi')->with('success', 'Transaksi berhasil disimpan');
+}
 }

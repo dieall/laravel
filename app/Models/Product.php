@@ -24,7 +24,7 @@ class Product extends Model
     
     public function transaksi()
     {
-        return $this->hasMany(Transaksi::class);
+        return $this->hasMany(Transaksi::class, 'id_barang');
     }
 
     

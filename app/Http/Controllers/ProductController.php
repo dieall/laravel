@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
+use App\Models\Pelanggan;
 use App\Models\Kategori;
+
 use App\Models\Product;
 
 class ProductController extends Controller
@@ -19,11 +22,16 @@ class ProductController extends Controller
         return view('products.index', compact('products'));
     }
 
+
     public function create()
     {
+        $products = Product::all();
+        $pelanggans = Pelanggan::all();
         $categories = Kategori::all();
-        return view('products.create', compact('categories'));
+    
+        return view('products.create', compact('products', 'pelanggans', 'categories'));
     }
+    
     
 
     /**
