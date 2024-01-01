@@ -85,7 +85,7 @@
                         <div class="carousel-inner">
                             @foreach ($products as $key => $product)
                                 <div class="carousel-item {{ $key === 0 ? 'active' : '' }}">
-                                    <img src="{{ route('beli.product', ['id' => $product->id]) }}" class="d-block w-100">
+                                    <img src="{{ asset('uploads/' . $product->image) }}" class="d-block w-100">
                                 </div>
                             @endforeach
                         </div>
