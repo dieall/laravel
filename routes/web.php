@@ -6,6 +6,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\PelangganController;
+use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\LandingpageController;
 
 
@@ -41,10 +42,10 @@ Route::middleware('auth')->group(function () {
         Route::get('', 'index')->name('products');
         Route::get('create', 'create')->name('products.create');
         Route::post('store', 'store')->name('products.store');
-        Route::get('show/{id}', 'show')->name('products.show');
-        Route::get('edit/{id}', 'edit')->name('products.edit');
-        Route::put('edit/{id}', 'update')->name('products.update');
-        Route::delete('destroy/{id}', 'destroy')->name('products.destroy');
+        Route::get('show/{id_barang}', 'show')->name('products.show');
+        Route::get('edit/{id_barang}', 'edit')->name('products.edit');
+        Route::put('edit/{id_barang}', 'update')->name('products.update');
+        Route::delete('destroy/{id_barang}', 'destroy')->name('products.destroy');
         
     });
 
@@ -72,10 +73,15 @@ Route::middleware('auth')->group(function () {
         Route::get('', 'index')->name('pelanggan');
         Route::get('create', 'create')->name('pelanggan.create');
         Route::post('store', 'store')->name('pelanggan.store');
-        Route::get('show/{id}', 'show')->name('pelanggan.show');
-        Route::get('edit/{id}', 'edit')->name('pelanggan.edit');
-        Route::put('edit/{id}', 'update')->name('pelanggan.update');
-        Route::delete('destroy/{id}', 'destroy')->name('pelanggan.destroy');
+        Route::get('show/{id_pelanggan}', 'show')->name('pelanggan.show');
+        Route::get('edit/{id_pelanggan}', 'edit')->name('pelanggan.edit');
+        Route::put('edit/{id_pelanggan}', 'update')->name('pelanggan.update');
+        Route::delete('destroy/{id_pelanggan}', 'destroy')->name('pelanggan.destroy');
+    });
+
+    Route::controller(TransaksiController::class)->prefix('transaksi')->group(function () {
+        Route::get('', 'index')->name('transaksi');
+
     });
 
     Route::get('/profile', [App\Http\Controllers\AuthController::class, 'profile'])->name('profile');

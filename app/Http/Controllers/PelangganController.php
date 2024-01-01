@@ -38,9 +38,9 @@ class PelangganController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $id_pelanggan)
     {
-        $pelanggan = Pelanggan::findOrFail($id);
+        $pelanggan = Pelanggan::findOrFail($id_pelanggan);
   
         return view('pelanggan.show', compact('pelanggan'));
     }
@@ -48,9 +48,9 @@ class PelangganController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(string $id_pelanggan)
     {
-        $pelanggan = Pelanggan::findOrFail($id);
+        $pelanggan = Pelanggan::findOrFail($id_pelanggan);
 
         return view('pelanggan.edit', compact('pelanggan'));
     }
@@ -58,9 +58,9 @@ class PelangganController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, string $id_pelanggan)
     {
-        $pelanggan = Pelanggan::findOrFail($id);
+        $pelanggan = Pelanggan::findOrFail($id_pelanggan);
   
         $pelanggan->update($request->all());
   
@@ -70,9 +70,9 @@ class PelangganController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $id_pelanggan)
     {
-        $pelanggan = Pelanggan::findOrFail($id);
+        $pelanggan = Pelanggan::findOrFail($id_pelanggan);
   
         $pelanggan->delete();
   

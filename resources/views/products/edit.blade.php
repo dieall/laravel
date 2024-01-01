@@ -5,7 +5,7 @@
 @section('contents')
     <h1 class="mb-0">Edit Product</h1>
     <hr />
-    <form action="{{ route('products.update', $product->id) }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('products.update', $product->id_barang) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         

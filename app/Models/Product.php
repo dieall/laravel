@@ -6,7 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-
+   
+    protected $table = "products";
+    protected $primaryKey = "id_barang";
     protected $fillable = [
         'nama',
         'harga',
@@ -18,6 +20,11 @@ class Product extends Model
     public function kategori()
     {
         return $this->belongsTo(Kategori::class);
+    }
+    
+    public function transaksi()
+    {
+        return $this->hasMany(Transaksi::class);
     }
 
     

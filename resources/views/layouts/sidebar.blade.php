@@ -43,6 +43,12 @@
       <span>Data Pelanggan</span></a>
   </li>
 
+    <li class="nav-item">
+    <a class="nav-link" href="{{ route('transaksi') }}">
+      <i class="fas fa-fw fa-user-alt"></i>
+      <span>Data Transaksi</span></a>
+  </li>
+
   <hr class="sidebar-divider">
               <!-- Heading -->
               <div class="sidebar-heading">

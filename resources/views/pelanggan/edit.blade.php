@@ -5,7 +5,7 @@
 @section('contents')
     <h1 class="mb-0">Edit Pelanggan</h1>
     <hr />
-    <form action="{{ route('pelanggan.update', $pelanggan->id) }}" method="POST">
+    <form action="{{ route('pelanggan.update', $pelanggan->id_pelanggan) }}" method="POST">
         @csrf
         @method('PUT')
         <div class="row">

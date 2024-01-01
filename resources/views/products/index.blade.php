@@ -42,13 +42,13 @@
                                     <td class="align-middle">{{ $rs->harga }}</td>
                                     <td class="align-middle">
                                     <div class="btn-group" role="group" aria-label="Basic example">
-    <a href="{{ route('products.show', $rs->id) }}" type="button" class="btn btn-secondary mr-2">
+    <a href="{{ route('products.show', $rs->id_barang) }}" type="button" class="btn btn-secondary mr-2">
         <i class="fas fa-eye"></i> 
     </a>
-    <a href="{{ route('products.edit', $rs->id)}}" type="button" class="btn btn-warning mr-2">
+    <a href="{{ route('products.edit', $rs->id_barang)}}" type="button" class="btn btn-warning mr-2">
         <i class="fas fa-edit"></i> 
     </a>
-    <form action="{{ route('products.destroy', $rs->id) }}" method="POST" type="button" class="btn btn-danger p-0" onsubmit="return confirm('Delete?')">
+    <form action="{{ route('products.destroy', $rs->id_barang) }}" method="POST" type="button" class="btn btn-danger p-0" onsubmit="return confirm('Delete?')">
         @csrf
         @method('DELETE')
         <button class="btn btn-danger">
