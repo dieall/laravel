@@ -25,32 +25,47 @@
 
             <!-- ISI DARI PAGES  -->
 
-  <li class="nav-item">
-    <a class="nav-link" href="{{ route('products') }}">
-      <i class="fas fa-fw fa-cube"></i>
-      <span>Data Barang</span></a>
-  </li>
-  
-  <li class="nav-item">
-    <a class="nav-link" href="{{ route('kategori') }}">
-      <i class="fas fa-fw fa-sliders-h"></i>
-      <span>Data Kategori</span></a>
-  </li>
+            @if(Auth::check() && (Auth::user()->level == 'Admin' || Auth::user()->level == 'Kasir'))
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('products') }}">
+            <i class="fas fa-fw fa-cube"></i>
+            <span>Data Barang</span>
+        </a>
+    </li>
+@endif
 
+  
+@if(Auth::check() && Auth::user()->level == 'Admin')
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('kategori') }}">
+            <i class="fas fa-fw fa-sliders-h"></i>
+            <span>Data Kategori</span>
+        </a>
+    </li>
+@endif
+
+
+
+  @if(Auth::check() && (Auth::user()->level == 'Admin' || Auth::user()->level == 'Kasir'))
   <li class="nav-item">
     <a class="nav-link" href="{{ route('pelanggan') }}">
       <i class="fas fa-fw fa-user-alt"></i>
       <span>Data Pelanggan</span></a>
   </li>
-
+  @endif
+  
+  @if(Auth::check() && (Auth::user()->level == 'Admin' || Auth::user()->level == 'Kasir'))
     <li class="nav-item">
     <a class="nav-link" href="{{ route('transaksi') }}">
       <i class="fas fa-fw fa-user-alt"></i>
       <span>Data Transaksi</span></a>
   </li>
+  @endif
 
-  <hr class="sidebar-divider">
+
               <!-- Heading -->
+              @if(Auth::check() && Auth::user()->level == 'Admin')
+              <hr class="sidebar-divider">
               <div class="sidebar-heading">
                 Data Masters
             </div>
@@ -66,6 +81,7 @@
       <i class="fas fa-fw fa-cog"></i>
       <span>Profile</span></a>
   </li>
+  @endif
   
   <!-- Divider -->
   <hr class="sidebar-divider d-none d-md-block">

@@ -16,21 +16,13 @@ class LandingpageController extends Controller
         return view('landingpage', compact('products'));
     }
 
-    public function beli(Request $request, $id_barang)
+    public function beli()
     {
-        try {
-            // Mengambil data produk berdasarkan id_barang
-            $product = Product::findOrFail($id_barang);
-
-            $pelanggans = Pelanggan::all();
-            $categories = Kategori::all();
-
-            // Menggunakan view 'landingpage.beli' untuk menampilkan pesan, detail produk, dan daftar semua produk, pelanggan, dan kategori
-            return view('landingpage.beli', compact('product', 'pelanggans', 'categories'));
-        } catch (\Exception $e) {
-            // Handle jika produk tidak ditemukan
-            return redirect()->back()->with('error', 'Produk tidak ditemukan.');
-        }
+        $products = Product::all();
+        $pelanggans = Pelanggan::all();
+        $categories = Kategori::all();
+    
+        return view('landingpage.beli', compact('products', 'pelanggans', 'categories'));
     }
 
     public function store(Request $request)

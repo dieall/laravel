@@ -15,18 +15,24 @@ Route::group(['prefix' => 'produk'], function () {
     // Route untuk menampilkan detail produk
     Route::get('/{id_barang}', [ProductController::class, 'show'])->name('product.show');
     
+    // Route untuk melakukan pembelian produk
+    Route::get('/beli/{id_barang}', [LandingpageController::class, 'beli'])->name('beli.product');
 
+    // Perbaikan pada definisi rute ini
+    Route::post('landingpage/store', [LandingpageController::class, 'store'])->name('landingpage.store');
 });
 
 Route::group(['prefix' => 'landingpage'], function () {
     Route::get('', [LandingpageController::class, 'index'])->name('landingpage');
-    Route::get('beli', 'beli')->name('landingpage.beli');
-    Route::post('store', 'store')->name('products.store');
+    Route::get('beli', [LandingpageController::class, 'beli'])->name('landingpage.beli');
+    Route::post('store', [LandingpageController::class, 'store'])->name('landingpage.store');
 });
 
 // Route default untuk LandingpageController
 Route::get('/', [LandingpageController::class, 'index']);
 
+// Route default untuk LandingpageController
+Route::get('/', [LandingpageController::class, 'index']);
 
 
 Route::controller(AuthController::class)->group(function () {

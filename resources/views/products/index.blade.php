@@ -8,7 +8,9 @@
     <hr>
         <h1 class="h3 mb-2 text-gray-800"></h1>
         <div>
+        @if(Auth::user() && Auth::user()->level == 'Admin')
         <a href="{{ route('products.create') }}" class="btn btn-primary mb-3">Add Product</a>
+        @endif
         </div>
     </div>
     
@@ -45,6 +47,7 @@
     <a href="{{ route('products.show', $rs->id_barang) }}" type="button" class="btn btn-secondary mr-2">
         <i class="fas fa-eye"></i> 
     </a>
+    @if(Auth::user() && Auth::user()->level == 'Admin')
     <a href="{{ route('products.edit', $rs->id_barang)}}" type="button" class="btn btn-warning mr-2">
         <i class="fas fa-edit"></i> 
     </a>
@@ -54,6 +57,7 @@
         <button class="btn btn-danger">
             <i class="fas fa-trash-alt"></i> 
         </button>
+        @endif
     </form>
 </div>
 

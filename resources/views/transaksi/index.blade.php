@@ -8,7 +8,11 @@
     <hr>
         <h1 class="h3 mb-2 text-gray-800"></h1>
         <div>
-            <a href="{{ route('transaksi.create') }}" class="btn btn-primary mb-3">Add Product</a>
+        @if(Auth::user() && Auth::user()->level == 'Admin')
+    <a href="{{ route('transaksi.create') }}" class="btn btn-primary mb-3">Add Transaksi</a>
+@endif
+
+
         </div>
     </div>
     
