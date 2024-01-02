@@ -47,9 +47,9 @@
                 <td class="align-middle">{{ $rs->tgl_beli }}</td>
                 <td>
                     <div class="btn-group justify-content-end" role="group" aria-label="Basic example">
-                        <a href="" class="btn btn-info">Detail</a>
-                        <a href="" class="btn btn-warning">Edit</a>
-                        <form action="" method="POST" onsubmit="return confirm('Delete?')">
+                    <a href="{{ route('transaksi.show', ['id' => $rs->id]) }}" class="btn btn-info">Detail</a>
+                        <a href="{{ route('transaksi.edit', $rs->id) }}" class="btn btn-warning">Edit</a>
+                        <form action="{{ route('transaksi.destroy', $rs->id) }}" method="POST" onsubmit="return confirm('Delete?')">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">Delete</button>

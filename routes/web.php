@@ -11,16 +11,22 @@ use App\Http\Controllers\LandingpageController;
 
 
 // Grup route untuk produk
-Route::prefix('produk')->group(function () {
+Route::group(['prefix' => 'produk'], function () {
     // Route untuk menampilkan detail produk
-    Route::get('/{id}', [ProductController::class, 'show'])->name('product.show');
+    Route::get('/{id_barang}', [ProductController::class, 'show'])->name('product.show');
     
-    // Route untuk melakukan pembelian produk
-    Route::get('/beli/{id}', [LandingpageController::class, 'beli'])->name('beli.product');
+
+});
+
+Route::group(['prefix' => 'landingpage'], function () {
+    Route::get('', [LandingpageController::class, 'index'])->name('landingpage');
+    Route::get('beli', 'beli')->name('landingpage.beli');
+    Route::post('store', 'store')->name('products.store');
 });
 
 // Route default untuk LandingpageController
 Route::get('/', [LandingpageController::class, 'index']);
+
 
 
 Route::controller(AuthController::class)->group(function () {
@@ -46,6 +52,7 @@ Route::middleware('auth')->group(function () {
         Route::get('edit/{id_barang}', 'edit')->name('products.edit');
         Route::put('edit/{id_barang}', 'update')->name('products.update');
         Route::delete('destroy/{id_barang}', 'destroy')->name('products.destroy');
+        
         
     });
 
@@ -83,8 +90,13 @@ Route::middleware('auth')->group(function () {
         Route::get('', 'index')->name('transaksi');
         Route::get('create', 'create')->name('transaksi.create');
         Route::post('store', 'store')->name('transaksi.store');
+        Route::get('show/{id}', 'show')->name('transaksi.show');
+        Route::get('/transaksi/edit/{id}', 'TransaksiController@edit')->name('transaksi.edit');
+        Route::delete('/transaksi/destroy/{id}', 'TransaksiController@destroy')->name('transaksi.destroy');
+        
 
     });
+
 
     Route::get('/profile', [App\Http\Controllers\AuthController::class, 'profile'])->name('profile');
 });

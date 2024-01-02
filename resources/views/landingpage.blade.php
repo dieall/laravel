@@ -91,7 +91,7 @@
                         <!-- Tambahkan informasi produk lainnya sesuai kebutuhan -->
                         <div class="detail d-flex justify-content-between align-items-center mt-4">
                             <p class="price">IDR {{ number_format($product->harga, 2) }}</p>
-                            <a href="{{ route('beli.product', ['id' => $product->id_barang]) }}" class="btn-cart"><i class="bx bx-cart-alt"></i></a>
+                            <a href="{{ route('landingpage.beli') }}" class="btn-cart"><i class="bx bx-cart-alt"></i></a>
                         </div>
                     </div>
                 </div>

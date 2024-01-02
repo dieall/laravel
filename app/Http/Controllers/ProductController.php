@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Models\Pelanggan;
 use App\Models\Kategori;
-
+use App\Models\Transaksi;
 use App\Models\Product;
 
 class ProductController extends Controller
@@ -109,5 +109,11 @@ class ProductController extends Controller
   
         return redirect()->route('products')->with('success', 'product deleted successfully');
     }
+
+
+    
+    
+    
+    
 
 }
