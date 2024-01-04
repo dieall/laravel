@@ -22,18 +22,7 @@
 			<button class="btn btn-outline-warning" type="button" id="button-addon2"><i class="bx bx-search"></i></button>
 		</div>
 		<ul class="navbar-nav ms-auto mt-3 mt-sm-0">
-			<li class="nav-item me-3">
-				<a class="nav-link active" href="#">
-				<i class="bx bx-heart"></i>
-				<span class="badge text-bg-warning rounded-circle position-absolute">2</span>
-				</a>
-			</li>
-			<li class="nav-item me-5">
-				<a class="nav-link" href="#">
-				<i class="bx bx-cart-alt"></i>
-				<span class="badge text-bg-warning rounded-circle position-absolute">3</span>
-				</a>
-			</li>
+
 
 			@if (Route::has('login'))
 			<li class="nav-item mt-5 mt-lg-0 text-center">
@@ -101,23 +90,7 @@
 </section>
 
 <!-- Subscribe  -->
-<section class="subscribe">
-<div class="container">
-	<div class="subscribe-wrapper">
-		<div class="row justify-content-center text-center">
-			<div class="col-lg-6 col-md-7 col-10 col-sub">
-				<h1>Subscribe to get latest updates!</h1>
-				<form action="#" class="mt-5">
-					<div class="input-group w-100">
-						<input type="email" class="form-control" placeholder="Type your email ..">
-						<button class="btn btn-outline-warning">Subscribe</button>
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
-</div>
-</section>
+
 <footer>
 <div class="container pt-5">
 	<div class="row row-content">
