@@ -66,11 +66,14 @@ class TransaksiController extends Controller
 
     public function show(string $id)
     {
+        $pelanggans = Pelanggan::all();
         $categories = Kategori::all();
-        $product = Product::findOrFail($id);
-  
+        $product    = Product::all();
+        $transaksi  = Transaksi::findOrFail($id); // Ganti dengan model transaksi yang sesuai
+        
         return view('transaksi.show', compact('transaksi'));
     }
+    
   
     /**
      * Show the form for editing the specified resource.
