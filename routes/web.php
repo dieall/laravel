@@ -97,7 +97,8 @@ Route::middleware('auth')->group(function () {
         Route::get('create', 'create')->name('transaksi.create');
         Route::post('store', 'store')->name('transaksi.store');
         Route::get('show/{id}', 'show')->name('transaksi.show');
-        Route::get('/transaksi/edit/{id}', 'TransaksiController@edit')->name('transaksi.edit');
+        Route::get('edit/{id}', 'edit')->name('transaksi.edit');
+        Route::put('edit/{id}', 'update')->name('transaksi.update');
         Route::delete('/transaksi/destroy/{id}', 'TransaksiController@destroy')->name('transaksi.destroy');
         
 

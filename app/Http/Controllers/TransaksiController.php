@@ -69,7 +69,7 @@ class TransaksiController extends Controller
         $pelanggans = Pelanggan::all();
         $categories = Kategori::all();
         $product    = Product::all();
-        $transaksi  = Transaksi::findOrFail($id); // Ganti dengan model transaksi yang sesuai
+        $transaksi = Transaksi::findOrFail($id); // Ganti dengan model transaksi yang sesuai
         
         return view('transaksi.show', compact('transaksi'));
     }
@@ -78,26 +78,37 @@ class TransaksiController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id_barang)
+    public function edit(string $id)
     {
+        $products   = Product::all();
+        $pelanggans = Pelanggan::all();
         $categories = Kategori::all();
-        $product = Product::findOrFail($id_barang);
-  
-        return view('products.edit', compact('product','categories'));
+        $transaksi  = Transaksi::findOrFail($id);
+        
+        return view('transaksi.edit', compact('transaksi', 'products', 'pelanggans', 'categories'));
     }
-  
+    
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id_barang)
+    public function update(Request $request, string $id)
     {
+        $request->validate([
+            'tgl_beli'  => 'required',
+            'id_barang' => 'required',
+            'kategori_id' => 'required',
+            'id_pelanggan' => 'required',
+            // ... tambahkan validasi untuk kolom-kolom lainnya
+        ]);
     
-        $product = Product::findOrFail($id_barang);
-  
-        $product->update($request->all());
-  
-        return redirect()->route('products')->with('success', 'product updated successfully');
+        $transaksi = Transaksi::findOrFail($id);
+        $transaksi->update($request->all());
+        
+    
+        return redirect()->route('transaksi')->with('success', 'Transaksi updated successfully');
     }
+    
+    
   
     /**
      * Remove the specified resource from storage.
