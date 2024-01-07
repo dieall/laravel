@@ -29,6 +29,18 @@
                     <label for="nama" class="form-label">Kategori</label>
                     <input type="text" name="nama" class="form-control" placeholder="Nama" value="{{ $transaksi->kategori->jenis }}" readonly>
                 </div>
+                <div class="col-md-6">
+                    <label for="nama" class="form-label">Jenis Kelamin</label>
+                    <input type="text" name="nama" class="form-control" placeholder="Nama" value="{{ $transaksi->pelanggan->jenis_kelamin }}" readonly>
+                </div>
+                <div class="col-md-6">
+                    <label for="nama" class="form-label">Nomor Handpone</label>
+                    <input type="text" name="nama" class="form-control" placeholder="Nama" value="{{ $transaksi->pelanggan->nomor_handpone }}" readonly>
+                </div>
+                <div class="col-md-6">
+                    <label for="nama" class="form-label">Alamat Pelanggan</label>
+                    <input type="text" name="nama" class="form-control" placeholder="Nama" value="{{ $transaksi->pelanggan->alamat }}" readonly>
+                </div>
             </div>
         </div>
     </div>

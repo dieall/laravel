@@ -100,6 +100,12 @@ Route::middleware('auth')->group(function () {
         Route::get('edit/{id}', 'edit')->name('transaksi.edit');
         Route::put('edit/{id}', 'update')->name('transaksi.update');
         Route::delete('destroy/{id}', 'destroy')->name('transaksi.destroy');
+
+
+        Route::get('beli', 'beli')->name('transaksi.beli');
+        Route::post('belii', 'belii')->name('transaksi.belii');
+
+        
         
 
     });
